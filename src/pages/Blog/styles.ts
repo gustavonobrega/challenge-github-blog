@@ -1,3 +1,3 @@
 import styled from 'styled-components'
  
-export const BlogContainer = styled.main``
+export const BlogContainer = styled.div``
