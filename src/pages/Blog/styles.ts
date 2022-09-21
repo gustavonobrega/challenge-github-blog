@@ -4,3 +4,12 @@ export const BlogContainer = styled.div`
   width: 100%;
   margin-top: 4.5rem;
 `
+
+export const Posts = styled.div`
+  width: 100%;
+  margin: 3rem 0;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 2rem;
+`

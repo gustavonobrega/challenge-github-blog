@@ -1,6 +1,8 @@
+import { PostCard } from './components/PostCard'
 import { Profile } from './components/Profile'
 import { SearchInput } from './components/SearchInput'
-import { BlogContainer } from './styles'
+
+import { BlogContainer, Posts } from './styles'
 
 export function Blog() {
   return (
@@ -10,6 +12,14 @@ export function Blog() {
       <BlogContainer>
         <SearchInput />
 
+        <Posts>
+          <PostCard />
+          <PostCard />
+          <PostCard />
+          <PostCard />
+          <PostCard />
+          <PostCard />
+        </Posts>
       </BlogContainer>
     </>
   )
