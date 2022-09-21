@@ -1,4 +1,5 @@
 import { Profile } from './components/Profile'
+import { SearchInput } from './components/SearchInput'
 import { BlogContainer } from './styles'
 
 export function Blog() {
@@ -7,6 +8,7 @@ export function Blog() {
       <Profile />
 
       <BlogContainer>
+        <SearchInput />
 
       </BlogContainer>
     </>
