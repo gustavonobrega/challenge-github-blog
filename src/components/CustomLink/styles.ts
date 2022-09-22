@@ -1,6 +1,10 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const CustomLinkContainer = styled.a`
+interface CustomLinkContainerProps {
+  variant?: "reverseIcon"
+}
+
+export const CustomLinkContainer = styled.a<CustomLinkContainerProps>`
   height: 1.188rem;
 
   font-size: 0.75rem;
@@ -17,5 +21,9 @@ export const CustomLinkContainer = styled.a`
 
   &:hover {
     border-color: ${props => props.theme.blue};
-}
+  }
+
+  ${props => props.variant === 'reverseIcon' && css`
+    flex-direction: row-reverse;
+  `}
 `
