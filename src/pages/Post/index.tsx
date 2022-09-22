@@ -1,3 +1,5 @@
+import ReactMarkdown from 'react-markdown'
+
 import { PostInfo } from './components/PostInfo'
 import { PostContainer } from './styles'
 
@@ -7,6 +9,10 @@ export function Post() {
       <PostInfo />
 
       <PostContainer>
+        
+        <ReactMarkdown>
+          ## Markdown Content
+        </ReactMarkdown>
 
       </PostContainer>
     </>
