@@ -18,6 +18,8 @@ export const ProfileContainer = styled.div`
 `
 
 export const ProfileInfos = styled.div`
+  width: 100%;
+
   > div {
     display: flex;
     justify-content: space-between;
