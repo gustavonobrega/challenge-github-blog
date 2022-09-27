@@ -5,15 +5,45 @@ import { faBuilding, faUserGroup } from "@fortawesome/free-solid-svg-icons";
 
 import { ProfileContainer, ProfileInfos } from './styles'
 import { CustomLink } from '../../../../components/CustomLink';
+import { useEffect, useState } from 'react';
+import { api } from '../../../../util/axios';
+
+interface ProfileData {
+  name: string;
+  login: string;
+  avatar: string;
+  bio: string;
+  followers: string;
+}
 
 export function Profile() {
+  const [profile, setProfile] = useState<ProfileData>();
+
+  useEffect(() => {
+    async function loadProfile() {
+      const { data } = await api.get('users/gustavonobrega');
+
+      const profile = {
+        name: data.name,
+        login: data.login,
+        avatar: data.avatar_url,
+        bio: data.bio,
+        followers: data.followers,
+      }
+
+      setProfile(profile)
+    }
+
+    loadProfile();
+  }, [])
+
   return (
       <ProfileContainer>
-        <img src="https://github.com/gustavonobrega.png" alt="" />
+        <img src={profile?.avatar} alt="" />
 
         <ProfileInfos>
           <div>
-            <strong>Gustavo Nóbrega</strong>
+            <strong>{profile?.name}</strong>
             <CustomLink
               href="https://github.com/gustavonobrega"
               target="_blank"
@@ -23,14 +53,13 @@ export function Profile() {
           </div>
 
           <p>
-            Tristique volutpat pulvinar vel massa, pellentesque egestas. 
-            Eu viverra massa quam dignissim aenean malesuada suscipit. Nunc, volutpat pulvinar vel mass.
+          {profile?.bio}
           </p>
 
           <ul>
             <li>
               <FontAwesomeIcon icon={faGithub} />
-              gustavonobrega
+              {profile?.login}
             </li>
             <li>
               <FontAwesomeIcon icon={faBuilding} />
@@ -38,7 +67,7 @@ export function Profile() {
             </li>
             <li>
               <FontAwesomeIcon icon={faUserGroup} />
-              3 seguidores
+              {profile?.followers} seguidores
             </li>
           </ul>
         </ProfileInfos>
