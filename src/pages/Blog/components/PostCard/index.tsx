@@ -9,7 +9,7 @@ interface PostCardProps {
 
 export function PostCard({ post }: PostCardProps) {
   return (
-    <PostCardContainer to="/post">
+    <PostCardContainer to={`/post/${post.number}`}>
       <div>
         <h3>{post.title}</h3>
         <span>{formatDistanceToNow(new Date(post.created_at), {
