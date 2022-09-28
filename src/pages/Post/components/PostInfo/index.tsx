@@ -2,15 +2,24 @@ import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft, faCalendarDay, faComment } from '@fortawesome/free-solid-svg-icons'
 import { CustomLink } from '../../../../components/CustomLink'
-import { PostInfoContainer} from './styles'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { PostType } from '../..'
+import { formatDistanceToNow } from 'date-fns';
+import ptBR from 'date-fns/locale/pt-BR';
+
+import { PostInfoContainer} from './styles'
 
 interface PostInfoProps {
   post: PostType;
 }
 
 export function PostInfo({ post }: PostInfoProps) {
+
+  const formattedDate = formatDistanceToNow(new Date(post.created_at), {
+    addSuffix: true,
+    locale: ptBR,
+  })
+
   return (
       <PostInfoContainer>
         <div>
@@ -37,7 +46,7 @@ export function PostInfo({ post }: PostInfoProps) {
           </li>
           <li>
             <FontAwesomeIcon icon={faCalendarDay} />
-            {post.created_at}
+            {formattedDate}
           </li>
           <li>
             <FontAwesomeIcon icon={faComment} />
