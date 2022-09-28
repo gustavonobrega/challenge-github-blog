@@ -10,6 +10,6 @@ export const Posts = styled.div`
   margin: 3rem 0;
 
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(26rem, 1fr));
   grid-gap: 2rem;
 `

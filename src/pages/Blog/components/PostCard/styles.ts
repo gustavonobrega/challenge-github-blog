@@ -5,7 +5,6 @@ export const PostCardContainer = styled(Link)`
   all: unset;
   max-height: 16.25rem;
   padding: 2rem;
-  overflow: hidden;
   background: ${props => props.theme['base-post']};
   border-radius: 10px;
   border: 2px solid ${props => props.theme['base-post']};
@@ -37,5 +36,10 @@ export const PostCardContainer = styled(Link)`
   p {
     margin-top: 1.25rem;
     line-height: 1.625rem;
+
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
   }
 `
