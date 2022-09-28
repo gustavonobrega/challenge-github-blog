@@ -4,8 +4,13 @@ import { faChevronLeft, faCalendarDay, faComment } from '@fortawesome/free-solid
 import { CustomLink } from '../../../../components/CustomLink'
 import { PostInfoContainer} from './styles'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
+import { PostType } from '../..'
 
-export function PostInfo() {
+interface PostInfoProps {
+  post: PostType;
+}
+
+export function PostInfo({ post }: PostInfoProps) {
   return (
       <PostInfoContainer>
         <div>
@@ -16,27 +21,27 @@ export function PostInfo() {
             variant="reverseIcon"
           />
           <CustomLink 
-            href="https://github.com/gustavonobrega"
+            href={post.html_url}
             target="_blank"
             text="Ver No Github"
             icon={<FontAwesomeIcon icon={faArrowUpRightFromSquare} />}
           />
         </div>
         
-        <h2>JavaScript data types and data structures</h2>
+        <h2>{post.title}</h2>
       
         <ul>
           <li>
             <FontAwesomeIcon icon={faGithub} />
-            gustavonobrega
+            {post.user?.login}
           </li>
           <li>
             <FontAwesomeIcon icon={faCalendarDay} />
-            Há 1 dia
+            {post.created_at}
           </li>
           <li>
             <FontAwesomeIcon icon={faComment} />
-            5 comentários
+            {post.comments} comentários
           </li>
         </ul>
       </PostInfoContainer>
