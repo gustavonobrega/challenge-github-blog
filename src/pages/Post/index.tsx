@@ -1,3 +1,5 @@
+import { formatDistanceToNow } from 'date-fns';
+import ptBR from 'date-fns/locale/pt-BR';
 import { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown'
 import { useParams } from 'react-router-dom'
@@ -26,9 +28,23 @@ export function Post() {
       const username = "gustavonobrega";
       const repo = "challenge-github-blog";
 
-      const response = await api.get(`repos/${username}/${repo}/issues/${number} `)
+      const { data } = await api.get(`repos/${username}/${repo}/issues/${number} `)
     
-      setPost(response.data);
+      const postInfo = {
+        title: data.title,
+        body: data.body,
+        comments: data.comments,
+        html_url: data.html_url,
+        created_at: formatDistanceToNow(new Date(data.created_at), {
+          addSuffix: true,
+          locale: ptBR,
+        }),
+        user: {
+          login: data.user.login,
+        },
+      }
+
+      setPost(postInfo);
     }
 
     loadPost()
@@ -43,7 +59,7 @@ export function Post() {
         <ReactMarkdown>
           {post.body}
         </ReactMarkdown>
-
+        
       </PostContainer>
     </>
   )

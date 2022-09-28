@@ -14,12 +14,6 @@ interface PostInfoProps {
 }
 
 export function PostInfo({ post }: PostInfoProps) {
-
-  const formattedDate = formatDistanceToNow(new Date(post.created_at), {
-    addSuffix: true,
-    locale: ptBR,
-  })
-
   return (
       <PostInfoContainer>
         <div>
@@ -46,7 +40,7 @@ export function PostInfo({ post }: PostInfoProps) {
           </li>
           <li>
             <FontAwesomeIcon icon={faCalendarDay} />
-            {formattedDate}
+            {post.created_at}
           </li>
           <li>
             <FontAwesomeIcon icon={faComment} />
