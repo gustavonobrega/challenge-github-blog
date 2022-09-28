@@ -6,7 +6,7 @@ import { faBuilding, faUserGroup } from "@fortawesome/free-solid-svg-icons";
 import { ProfileContainer, ProfileInfos } from './styles'
 import { CustomLink } from '../../../../components/CustomLink';
 import { useEffect, useState } from 'react';
-import { api } from '../../../../util/axios';
+import { api } from '../../../../lib/axios';
 
 interface ProfileData {
   name: string;
@@ -17,7 +17,7 @@ interface ProfileData {
 }
 
 export function Profile() {
-  const [profile, setProfile] = useState<ProfileData>();
+  const [profile, setProfile] = useState<ProfileData>({} as ProfileData);
 
   useEffect(() => {
     async function loadProfile() {
@@ -39,11 +39,11 @@ export function Profile() {
 
   return (
       <ProfileContainer>
-        <img src={profile?.avatar} alt="" />
+        <img src={profile.avatar} alt="" />
 
         <ProfileInfos>
           <div>
-            <strong>{profile?.name}</strong>
+            <strong>{profile.name}</strong>
             <CustomLink
               href="https://github.com/gustavonobrega"
               target="_blank"
@@ -53,13 +53,13 @@ export function Profile() {
           </div>
 
           <p>
-          {profile?.bio}
+          {profile.bio}
           </p>
 
           <ul>
             <li>
               <FontAwesomeIcon icon={faGithub} />
-              {profile?.login}
+              {profile.login}
             </li>
             <li>
               <FontAwesomeIcon icon={faBuilding} />
@@ -67,7 +67,7 @@ export function Profile() {
             </li>
             <li>
               <FontAwesomeIcon icon={faUserGroup} />
-              {profile?.followers} seguidores
+              {profile.followers} seguidores
             </li>
           </ul>
         </ProfileInfos>
