@@ -1,27 +1,30 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons'
+import {
+  faArrowUpRightFromSquare,
+  faBuilding,
+  faUserGroup,
+} from '@fortawesome/free-solid-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
-import { faBuilding, faUserGroup } from "@fortawesome/free-solid-svg-icons";
 
 import { ProfileContainer, ProfileInfos } from './styles'
-import { CustomLink } from '../../../../components/CustomLink';
-import { useEffect, useState } from 'react';
-import { api } from '../../../../lib/axios';
+import { CustomLink } from '../../../../components/CustomLink'
+import { useEffect, useState } from 'react'
+import { api } from '../../../../lib/axios'
 
 interface ProfileData {
-  name: string;
-  login: string;
-  avatar: string;
-  bio: string;
-  followers: string;
+  name: string
+  login: string
+  avatar: string
+  bio: string
+  followers: string
 }
 
 export function Profile() {
-  const [profile, setProfile] = useState<ProfileData>({} as ProfileData);
+  const [profile, setProfile] = useState<ProfileData>({} as ProfileData)
 
   useEffect(() => {
     async function loadProfile() {
-      const { data } = await api.get('users/gustavonobrega');
+      const { data } = await api.get('users/gustavonobrega')
 
       const profile = {
         name: data.name,
@@ -34,43 +37,41 @@ export function Profile() {
       setProfile(profile)
     }
 
-    loadProfile();
+    loadProfile()
   }, [])
 
   return (
-      <ProfileContainer>
-        <img src={profile.avatar} alt="" />
+    <ProfileContainer>
+      <img src={profile.avatar} alt="" />
 
-        <ProfileInfos>
-          <div>
-            <strong>{profile.name}</strong>
-            <CustomLink
-              href="https://github.com/gustavonobrega"
-              target="_blank"
-              text="Github"
-              icon={<FontAwesomeIcon icon={faArrowUpRightFromSquare} />}
-            />
-          </div>
+      <ProfileInfos>
+        <div>
+          <strong>{profile.name}</strong>
+          <CustomLink
+            href="https://github.com/gustavonobrega"
+            target="_blank"
+            text="Github"
+            icon={<FontAwesomeIcon icon={faArrowUpRightFromSquare} />}
+          />
+        </div>
 
-          <p>
-          {profile.bio}
-          </p>
+        <p>{profile.bio}</p>
 
-          <ul>
-            <li>
-              <FontAwesomeIcon icon={faGithub} />
-              {profile.login}
-            </li>
-            <li>
-              <FontAwesomeIcon icon={faBuilding} />
-              Rocketseat
-            </li>
-            <li>
-              <FontAwesomeIcon icon={faUserGroup} />
-              {profile.followers} seguidores
-            </li>
-          </ul>
-        </ProfileInfos>
-      </ProfileContainer>
+        <ul>
+          <li>
+            <FontAwesomeIcon icon={faGithub} />
+            {profile.login}
+          </li>
+          <li>
+            <FontAwesomeIcon icon={faBuilding} />
+            Rocketseat
+          </li>
+          <li>
+            <FontAwesomeIcon icon={faUserGroup} />
+            {profile.followers} seguidores
+          </li>
+        </ul>
+      </ProfileInfos>
+    </ProfileContainer>
   )
 }

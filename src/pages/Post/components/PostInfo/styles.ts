@@ -1,10 +1,10 @@
 import styled from 'styled-components'
- 
+
 export const PostInfoContainer = styled.div`
   width: 100%;
   padding: 2rem;
   border-radius: 10px;
-  background: ${props => props.theme['base-profile']};
+  background: ${(props) => props.theme['base-profile']};
   box-shadow: 0px 2px 28px rgba(0, 0, 0, 0.2);
 
   > div {
@@ -14,7 +14,7 @@ export const PostInfoContainer = styled.div`
 
   h2 {
     margin-top: 1.5rem;
-    color: ${props => props.theme['base-title']};
+    color: ${(props) => props.theme['base-title']};
   }
 
   ul {
@@ -29,12 +29,12 @@ export const PostInfoContainer = styled.div`
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      color: ${props => props.theme['base-span']};
+      color: ${(props) => props.theme['base-span']};
 
       svg {
         width: 1.125rem;
         height: 1.125rem;
-        color: ${props => props.theme['base-label']};
+        color: ${(props) => props.theme['base-label']};
       }
     }
   }

@@ -7,22 +7,23 @@ import { SearchInput } from './components/SearchInput'
 import { BlogContainer, Posts } from './styles'
 
 export interface IPost {
-  title: string;
-  body: string;
-  number: number;
-  created_at: string;
+  title: string
+  body: string
+  number: number
+  created_at: string
 }
 
-
 export function Blog() {
-  const [posts, setPosts] = useState<IPost[]>([]);
+  const [posts, setPosts] = useState<IPost[]>([])
 
   async function fetchPosts(query?: string) {
-    const username = "gustavonobrega";
-    const repo = "challenge-github-blog";
+    const username = 'gustavonobrega'
+    const repo = 'challenge-github-blog'
 
-    const response = await api.get(`search/issues?q=${query ?? ""}%20repo:${username}/${repo}`)
-  
+    const response = await api.get(
+      `search/issues?q=${query ?? ''}%20repo:${username}/${repo}`,
+    )
+
     setPosts(response.data.items)
   }
 
@@ -35,13 +36,12 @@ export function Blog() {
       <Profile />
 
       <BlogContainer>
-        <SearchInput postsLength={posts.length} fetchPosts={fetchPosts}/>
+        <SearchInput postsLength={posts.length} fetchPosts={fetchPosts} />
 
         <Posts>
-          {posts.map(post => (
+          {posts.map((post) => (
             <PostCard key={post.number} post={post} />
           ))}
-
         </Posts>
       </BlogContainer>
     </>

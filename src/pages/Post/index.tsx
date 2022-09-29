@@ -1,35 +1,37 @@
-import { formatDistanceToNow } from 'date-fns';
-import ptBR from 'date-fns/locale/pt-BR';
-import { useEffect, useState } from 'react';
+import { formatDistanceToNow } from 'date-fns'
+import ptBR from 'date-fns/locale/pt-BR'
+import { useEffect, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import { useParams } from 'react-router-dom'
-import { api } from '../../lib/axios';
+import { api } from '../../lib/axios'
 
 import { PostInfo } from './components/PostInfo'
 import { PostContainer } from './styles'
 
 export interface PostType {
-  title: string;
-  body: string;
-  comments: number;
-  html_url: string;
-  created_at: string;
+  title: string
+  body: string
+  comments: number
+  html_url: string
+  created_at: string
   user?: {
-    login: string;
-  };
-} 
+    login: string
+  }
+}
 
 export function Post() {
   const [post, setPost] = useState<PostType>({} as PostType)
-  const { number } = useParams();
+  const { number } = useParams()
 
   useEffect(() => {
     async function loadPost() {
-      const username = "gustavonobrega";
-      const repo = "challenge-github-blog";
+      const username = 'gustavonobrega'
+      const repo = 'challenge-github-blog'
 
-      const { data } = await api.get(`repos/${username}/${repo}/issues/${number} `)
-    
+      const { data } = await api.get(
+        `repos/${username}/${repo}/issues/${number} `,
+      )
+
       const postInfo = {
         title: data.title,
         body: data.body,
@@ -44,18 +46,18 @@ export function Post() {
         },
       }
 
-      setPost(postInfo);
+      setPost(postInfo)
     }
 
     loadPost()
-  }, [])
+  }, [number])
 
   return (
     <>
       <PostInfo post={post} />
 
       <PostContainer>
-        <ReactMarkdown>{post.body}</ReactMarkdown> 
+        <ReactMarkdown>{post.body}</ReactMarkdown>
       </PostContainer>
     </>
   )

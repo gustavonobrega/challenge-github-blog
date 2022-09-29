@@ -1,7 +1,6 @@
 import logoGithub from '../../assets/logo.svg'
 import { HeaderContainer } from './styles'
 
-
 export function Header() {
   return (
     <HeaderContainer>

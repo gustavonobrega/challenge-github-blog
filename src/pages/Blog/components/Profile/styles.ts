@@ -1,10 +1,10 @@
 import styled from 'styled-components'
- 
+
 export const ProfileContainer = styled.div`
   width: 100%;
   padding: 2rem;
   border-radius: 10px;
-  background: ${props => props.theme['base-profile']};
+  background: ${(props) => props.theme['base-profile']};
   box-shadow: 0px 2px 28px rgba(0, 0, 0, 0.2);
 
   display: flex;
@@ -26,7 +26,7 @@ export const ProfileInfos = styled.div`
 
     strong {
       font-size: 1.5rem;
-      color: ${props => props.theme['base-title']}
+      color: ${(props) => props.theme['base-title']};
     }
   }
 
@@ -47,12 +47,12 @@ export const ProfileInfos = styled.div`
       align-items: center;
       gap: 0.531rem;
 
-      color: ${props => props.theme['base-subtitle']};
+      color: ${(props) => props.theme['base-subtitle']};
 
       svg {
         width: 1.125rem;
         height: 1.125rem;
-        color: ${props => props.theme['base-label']}
+        color: ${(props) => props.theme['base-label']};
       }
     }
   }
