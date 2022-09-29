@@ -4,8 +4,6 @@ import { faChevronLeft, faCalendarDay, faComment } from '@fortawesome/free-solid
 import { CustomLink } from '../../../../components/CustomLink'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { PostType } from '../..'
-import { formatDistanceToNow } from 'date-fns';
-import ptBR from 'date-fns/locale/pt-BR';
 
 import { PostInfoContainer} from './styles'
 

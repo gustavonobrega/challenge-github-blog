@@ -55,11 +55,7 @@ export function Post() {
       <PostInfo post={post} />
 
       <PostContainer>
-        
-        <ReactMarkdown>
-          {post.body}
-        </ReactMarkdown>
-        
+        <ReactMarkdown>{post.body}</ReactMarkdown> 
       </PostContainer>
     </>
   )
