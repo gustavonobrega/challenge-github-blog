@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { api } from '../../lib/axios'
 import { PostCard } from './components/PostCard'
 import { Profile } from './components/Profile'
@@ -16,7 +16,7 @@ export interface IPost {
 export function Blog() {
   const [posts, setPosts] = useState<IPost[]>([])
 
-  async function fetchPosts(query?: string) {
+  const fetchPosts = useCallback(async (query?: string) => {
     const username = 'gustavonobrega'
     const repo = 'challenge-github-blog'
 
@@ -25,11 +25,11 @@ export function Blog() {
     )
 
     setPosts(response.data.items)
-  }
+  }, [])
 
   useEffect(() => {
     fetchPosts()
-  }, [])
+  }, [fetchPosts])
 
   return (
     <>
